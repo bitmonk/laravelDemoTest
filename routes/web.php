@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/',[PageController::class,'index']);
+Route::get('/',[PageController::class,'index'])->name('home');
 Route::get('/about',[PageController::class,'about'])->name('about');
 Route::get('/services/post/blog',[PageController::class,'service'])->name('amit');
 
@@ -28,6 +28,7 @@ Route::resource('/home',HomeController::class)->name('any','home');
 
 Route::get('/todo',[TodoController::class,'todo'])->name('todo');
 Route::post('/todo',[TodoController::class,'addTodo'])->name('todo.post');
+Route::get('/edit/{id}',[TodoController::class,'edit'])->name('todo.edit');
 
 
 

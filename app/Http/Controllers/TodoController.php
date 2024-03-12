@@ -10,15 +10,26 @@ class TodoController extends Controller
 
     public function todo()
     {
-        return view('Page.Todo.todo');
+
+        // Select * from todos
+        $todo = Todo::all();
+        return view('Page.Todo.todo',compact('todo'));
     }
 
-    
+
     public function addTodo(Request $request)
     {
 
         $todo = new Todo();
-        $todo->task = $request->blabla;
+        $todo->task = $request->falano;
         $todo->save();
+        return redirect()->back();
+    }
+
+    public function edit($id){
+
+        $editTodos = Todo::findOrFail($id);
+        return view('Page.Todo.Edit',compact('editTodos'));
+
     }
 }

@@ -6,11 +6,10 @@
             <div class="d-flex gap-2 justify-content-center">
                 @csrf
                 <div>
-                    <input type="text" placeholder="Add Task" name="blabla" class="form-control"  id="">
+                    <input type="text" placeholder="Add Task" name="falano" id="" class="form-control"  id="">
                     @error('blabla')
 
                     <span class="text-danger">{{$message}}</span>
-                        <span>Hello world</span>
                     @enderror
                 </div>
                 <div>
@@ -18,5 +17,50 @@
                 </div>
             </div>
         </form>
+
+
+    </div>
+    <div class=" container my-5">
+
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">S.No</th>
+                <th scope="col">Task List</th>
+                <th scope="col">Status</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+
+                @foreach ($todo as $item )
+                <tr>
+                    <th scope="row">{{$loop->iteration}}</th>
+                    <td>{{$item->task}}</td>
+                    <td>
+                        @if ($item->status == 0)
+                        <span ><a href="" class="badge bg-danger">Not Complete</a></span>
+
+                        @else
+                        <span><a href="" class="badge bg-primary">Complete</a></span>
+
+                        @endif
+
+
+                    </td>
+                    <td><a href="{{route('todo.edit',$item->id)}}"><Button class="badge bg-success">EDIT</Button></a></td>
+                  </tr>
+
+                @endforeach
+
+
+
+            </tbody>
+          </table>
+
+
+
+
+
     </div>
 @endsection

@@ -18,7 +18,7 @@
           <li class="nav-item">
             <a class="nav-link" href="/blog">Blog</a>
           </li>
-         
+
           <li class="nav-item">
             <a class="nav-link" href="{{route('todo')}}">Todo</a>
           </li>
