@@ -10,7 +10,7 @@
                     @error('blabla')
 
                     <span class="text-danger">{{$message}}</span>
-
+                        <span>Hello world</span>
                     @enderror
                 </div>
                 <div>
