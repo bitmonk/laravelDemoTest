@@ -6,13 +6,14 @@
             <div class="d-flex gap-2 justify-content-center">
                 @csrf
                 <div>
-                    <input type="text" placeholder="Add Task" name="falano" id="" class="form-control"  id="">
-                    @error('blabla')
-
+                    <input type="text" placeholder="Add Task" name="falano" id="" class="form-control"  id="" required>
+                    @error('falano')
                     <span class="text-danger">{{$message}}</span>
+
                     @enderror
+
                 </div>
-                <div>
+                <div >
                     <button class="btn btn-primary">Add</button>
                 </div>
             </div>
@@ -48,7 +49,12 @@
 
 
                     </td>
-                    <td><a href="{{route('todo.edit',$item->id)}}"><Button class="badge bg-success">EDIT</Button></a></td>
+                    <td>
+
+                        <a href="{{route('todo.edit',$item->id)}}" ><Button class="badge bg-success">EDIT</Button></a>
+                        <a href="{{route('delete',$item->id)}}" ><Button class="badge bg-danger">DELETE</Button></a>
+
+                    </td>
                   </tr>
 
                 @endforeach

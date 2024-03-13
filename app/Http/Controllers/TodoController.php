@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\TodoRequest;
 use App\Models\Todo;
 use Illuminate\Http\Request;
 
@@ -17,9 +18,9 @@ class TodoController extends Controller
     }
 
 
-    public function addTodo(Request $request)
+    public function addTodo(TodoRequest $request)
     {
-
+    
         $todo = new Todo();
         $todo->task = $request->falano;
         $todo->save();
@@ -32,4 +33,18 @@ class TodoController extends Controller
         return view('Page.Todo.Edit',compact('editTodos'));
 
     }
+
+    public function update(Request $request, $id){
+        $todoUpdate = Todo::findOrFail($id);
+        $todoUpdate->task = $request->task;
+        $todoUpdate->update();
+        return redirect()->route('todo');
+    }
+
+    public function delete($id){
+        $deleteTodo = Todo::findOrFail($id);
+        $deleteTodo->delete();
+        return redirect()->back();
+    }
+
 }
