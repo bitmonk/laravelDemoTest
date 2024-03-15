@@ -51,6 +51,12 @@ class TodoController extends Controller
 
     public function delete($id){
         $deleteTodo = Todo::findOrFail($id);
+        $deleteImage = public_path( $deleteTodo->image );
+        if(file_exists($deleteImage)){
+            unlink($deleteImage);
+        }
+        // return $deleteImage;
+
         $deleteTodo->delete();
         return redirect()->back();
     }
