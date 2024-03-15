@@ -67,13 +67,18 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 
 ### Artisan command
 - **php artisan optimize**
+- **php artisan serve - to run the laravel project**
+- **php artisan optimize - to clean the route**
+- **php artisan make:controller [ControllerName] - to generate the Controller to write the business logic inside the controller**
+- **php artisan migrate - to push the database table inside the MySQL**
+ - **php artisan make:model [ModelName] -m - To make ta database table for MySql**
+ - **php artisan migrate:rollback - To rollback the Database table**
 
 
 
- php artisan serve - to run the laravel project
- php artisan optimize - to clean the route
- php artisan make:controller [ControllerName] - to generate the Controller to write the business logic inside the controller
- php artisan migrate - to push the database table inside the MySQL 
- php artisan make:model [ModelName] -m - To make ta database table for MySql
- php artisan migrate:rollback - To rollback the Database table 
+ 
+ 
+ 
+
+ 
 
