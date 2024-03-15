@@ -13,10 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('todos', function (Blueprint $table) {
+        Schema::create('resource_todos', function (Blueprint $table) {
             $table->id();
             $table->string('task');
-            $table->string('image')->nullable();
             $table->boolean('status')->default(0);
             $table->timestamps();
         });
@@ -29,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('todos');
+        Schema::dropIfExists('resource_todos');
     }
 };

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\RtodoController;
 use App\Http\Controllers\TodoController;
 use Illuminate\Support\Facades\Route;
 
@@ -31,6 +32,15 @@ Route::post('/todo',[TodoController::class,'addTodo'])->name('todo.post');
 Route::get('/edit/{id}',[TodoController::class,'edit'])->name('todo.edit');
 Route::post('/edit/{id}',[TodoController::class,'update'])->name('todo.update');
 Route::get('/delete/{id}',[TodoController::class,'delete'])->name('delete');
+Route::get('/change/status/{id}',[TodoController::class,'statusComelete'])->name('status.complete');
+Route::get('/change/notcomplete/{id}',[TodoController::class,'notComplete'])->name('status.notcomplete');
+
+
+
+// Resource Controller for CRUD operation
+
+Route::resource('/crud',RtodoController::class)->name('any','crud');
+Route::get('/crud/status',[RtodoController::class,'setstatus'])->name('setstatus');
 
 
 

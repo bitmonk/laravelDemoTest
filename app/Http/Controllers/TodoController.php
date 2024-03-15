@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\TodoRequest;
 use App\Models\Todo;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class TodoController extends Controller
 {
@@ -20,10 +21,17 @@ class TodoController extends Controller
 
     public function addTodo(TodoRequest $request)
     {
-    
+
         $todo = new Todo();
         $todo->task = $request->falano;
+        if($request->hasFile('photo')){
+            $image = $request->file('photo');
+            $newImage = $image->hashName();
+            $image->move("image",$newImage);
+            $todo->image = "image/$newImage";
+        }
         $todo->save();
+        toast('Task Added','success');
         return redirect()->back();
     }
 
@@ -46,5 +54,25 @@ class TodoController extends Controller
         $deleteTodo->delete();
         return redirect()->back();
     }
+
+    public function statusComelete($id){
+        $todo = Todo::findOrFail($id);
+        $todo->status = 1;
+        $todo->save();
+        toast('Status changed','success');
+        return redirect()->back();
+
+
+    }
+
+    public function notComplete($id){
+        $todo = Todo::findOrFail($id);
+        $todo->status = 0;
+        $todo->save();
+        toast('Status changed','success');
+        return redirect()->back();
+    }
+
+
 
 }

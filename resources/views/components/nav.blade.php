@@ -22,6 +22,9 @@
           <li class="nav-item">
             <a class="nav-link" href="{{route('todo')}}">Todo</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{route('crud.index')}}">Resource</a>
+          </li>
 
 
 
