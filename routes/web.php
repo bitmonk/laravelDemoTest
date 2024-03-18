@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\RtodoController;
@@ -27,7 +28,7 @@ Route::resource('/home',HomeController::class)->name('any','home');
 // Todo Routes
 
 
-Route::get('/todo',[TodoController::class,'todo'])->name('todo');
+Route::get('/todo',[TodoController::class,'todo'])->name('todo')->middleware('checkRoute');
 Route::post('/todo',[TodoController::class,'addTodo'])->name('todo.post');
 Route::get('/edit/{id}',[TodoController::class,'edit'])->name('todo.edit');
 Route::post('/edit/{id}',[TodoController::class,'update'])->name('todo.update');
@@ -41,6 +42,13 @@ Route::get('/change/notcomplete/{id}',[TodoController::class,'notComplete'])->na
 
 Route::resource('/crud',RtodoController::class)->name('any','crud');
 Route::get('/crud/status',[RtodoController::class,'setstatus'])->name('setstatus');
+
+
+
+// Auth Route
+Route::get('/login',[AuthController::class,'login'])->name('login');
+Route::get('/register',[AuthController::class,'register'])->name('register');
+Route::post('/register',[AuthController::class,'registerPost'])->name('register.post');
 
 
 
