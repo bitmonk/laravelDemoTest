@@ -12,9 +12,11 @@
           <li class="nav-item">
             <a class="nav-link" href="/about">About</a>
           </li>
+          @auth
           <li class="nav-item">
             <a class="nav-link" href="{{route('amit')}}">Service</a>
           </li>
+          @endauth
           <li class="nav-item">
             <a class="nav-link" href="/blog">Blog</a>
           </li>
@@ -25,11 +27,29 @@
           <li class="nav-item">
             <a class="nav-link" href="{{route('crud.index')}}">Resource</a>
           </li>
+          @if(Auth::check())
+          <li class="nav-item">
+            <a class="nav-link" href="{{route('logout')}}">Logout</a>
+          </li>
+
+          @else
+
           <li class="nav-item">
             <a class="nav-link" href="{{route('login')}}">Login</a>
           </li>
+
+          @endif
+
+
+
           <li class="nav-item">
             <a class="nav-link" href="{{route('register')}}">Register</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{route('register')}}">{{Auth::check()? Auth::user()->name : ''}}
+
+
+            </a>
           </li>
 
 
